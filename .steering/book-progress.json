@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-03-11T00:00:00",
+  "total_chapters": 5,
+  "chapters": {
+    "01": { "status": "reviewing", "step": "reviewing", "completed_at": null },
+    "02": { "status": "pending", "step": null, "completed_at": null },
+    "03": { "status": "pending", "step": null, "completed_at": null },
+    "04": { "status": "pending", "step": null, "completed_at": null },
+    "05": { "status": "pending", "step": null, "completed_at": null }
+  }
+}
