@@ -1,1 +1,0 @@
-/Users/sogawa/Documents/GitHub/claude-code-book-write-template-test/sample-app/wasm-image-filter/rust/target/wasm32-unknown-unknown/release/libwasm_image_filter.rlib: /Users/sogawa/Documents/GitHub/claude-code-book-write-template-test/sample-app/wasm-image-filter/rust/src/lib.rs
