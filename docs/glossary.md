@@ -29,6 +29,14 @@
 **定義**: WASMモジュールがファイルシステムやネットワーク等のOS機能にアクセスするための標準インターフェース
 **初出**: 第1章
 
+### WASI Preview 2
+**定義**: WASIの第2世代仕様（WASI 0.2.0）。ファイルシステム、HTTP、乱数生成等のシステムインターフェースを標準化し、WASMランタイム間のポータビリティを実現する
+**初出**: 第5章
+
+### Component Model
+**定義**: 異なる言語で書かれたWASMモジュール同士を安全に連携させる仕組み。WIT（WebAssembly Interface Types）を通じて関数を相互呼び出しできる
+**初出**: 第5章
+
 ### バイトコード (Bytecode)
 **定義**: 仮想マシンが解釈・実行するための中間表現。WASMはスタックベースのバイトコードを採用している
 **初出**: 第1章
@@ -124,11 +132,13 @@
 
 ### A-Z
 - ArrayBuffer → JavaScript連携
+- Component Model → WebAssembly コア概念
 - containerd → プラットフォーム/ランタイム関連
 - Pyodide → ツールチェーン
 - runwasi → プラットフォーム/ランタイム関連
 - TinyGo → ツールチェーン
 - WASI → WebAssembly コア概念
+- WASI Preview 2 → WebAssembly コア概念
 - wasm-bindgen → ツールチェーン
 - wasm-pack → ツールチェーン
 - wasmtime → ツールチェーン

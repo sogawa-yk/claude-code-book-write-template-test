@@ -56,7 +56,7 @@
 - WASI対応のCLI版を `cli/` に作成
 - Kubernetesマニフェスト（Deployment、Service）を作成
 
-### 5.4 パフォーマンス分析とまとめ
+### 5.4 まとめと将来展望
 
 **概要**: 本書全体の振り返りとして、WASMの現在地と将来展望をまとめる。Component Model、WASI Preview 2等の動向にも触れる。
 
