@@ -2,55 +2,52 @@
 
 ## 構成・文体レビュー
 
-- 仕様整合性: OK（節構成・図表・キーポイント全て網羅）
-- 章間整合性: OK
-- 技術正確性: OK
-- 図表品質: OK
-- 理解度チェック: OK
+**総合評価: 4/5**
 
-### 要修正
-1. 線形メモリの初出で英語併記なし（表1.1内）
-2. JITコンパイルの表記揺れ（「JIT（Just-in-Time）コンパイル」→「JITコンパイル（Just-in-Time Compilation）」）
-3. Solomon Hykes氏の引用文が80字超
+### 要修正（優先度: 中）
+1. **JIT/AOTの用語整備**: JITがglossary未定義。specの1.2節キーポイント「WASMはAOTに近い実行モデル」に対応するAOTへの言及が本文にない
+2. **WASIの発表主体**: 「Bytecode Allianceが発表した」→「Mozillaが提案した」等に修正
+
+### 要修正（優先度: 低）
+3. glossary.mdの初出章の更新（runwasi, containerd, wasmtimeが第1章で初出）
+4. 図1.4: 完成イメージが不足（構築ステップのみ）
 
 ## 技術検証レビュー
 
-- 16項目中14項目が正確
-
 ### 要修正
-1. サンドボックスの説明: 「エクスポートされた関数を通じて」→「ホストからインポートされた関数を通じて」
-2. Bytecode AllianceとWasmerの関係: WasmerはBA外のプロジェクト
+1. **参考文献[^1]の年号**: W3C仕様のRecommendationは2019年。「(2017)」は誤り
+2. **WASIの発表主体**: WASIを発表したのはMozilla（Lin Clark, 2019年3月）。Bytecode Alliance設立は2019年11月
+
+### 正確と判定: 5件
+- containerd + runwasiの記述、スタックベースVM、JIT/脱最適化の説明等
 
 ## 情報ソース検証
 
 ### 要修正
-1. Solomon Hykes氏の脚注にURL追加
-2. WASIの提案時期に情報ソース追加
-3. Bytecode AllianceとWasmerの関係を明確化（tech-verifierと重複）
-4. 「WASMモジュールはコンテナイメージよりも軽量で、起動時間はミリ秒単位」にソース追加
+1. **[^1]**: W3C仕様の年号を(2019)に修正、またはブラウザ実装を裏付ける別ソースに差し替え
+2. **[^2]**: 発表主体をMozillaに変更、ソースURLをMozilla Hacksに差し替え
+3. **表1.1**: 起動時間・バイナリサイズの比較データにソース（脚注）追加が必要
 
 ## 理解度チェック問題フォーマット検証
 
-- 基本フォーマット: OK
-- 種類のバランス: 設計問題が0問（推奨は3種混在）
+### 要修正
+1. **設計問題が0問**: 判断問題x2に偏り。1問を設計問題に変更するか追加を推奨
 
 ## Mermaid構文検証
 
-- 構文エラー: 0件
-- 配色ルール非準拠: 0件
-- 軽微: 未使用classDefが2ブロックに存在（修正任意）
+### 要修正（軽微）
+1. ブロック2（図1.2）: `classDef user`が未定義（一貫性のみ）
+2. ブロック4（図1.4）: `classDef user`が未定義（一貫性のみ）
 
 ---
 ## 対応結果
 - **対応日**: 2026-03-11
 - **修正内容**:
-  - サンドボックスの説明を「エクスポート」→「インポート」に修正
-  - Bytecode AllianceとWasmerの関係を明確化（「同団体のwasmtimeをはじめ」）
-  - 線形メモリの初出に英語併記（Linear Memory）を追加
-  - JITコンパイルの表記をglossary.mdに統一
-  - Solomon Hykes氏の引用文を分割し80字以内に収めた
-  - 肩書きを「共同創業者」→「創業者」に修正
-  - 脚注にURL追加（Solomon Hykes氏のツイート）
-  - WASIの提案時期に情報ソース追加（Mozilla Hacks記事）
-  - WASMの起動時間に情報ソース追加（wasmtime公式）、「マイクロ秒からミリ秒単位」に修正
-  - 参考文献にcontainerd/runwasiを追加
+  - WASIの発表主体を「Bytecode Alliance」→「MozillaのLin Clarkら」に修正、Bytecode Allianceの役割を別文で補足
+  - 参考文献[^1]をMozilla Blogに差し替え、[^2]をMozilla Hacksに差し替え
+  - 表1.1のソースとしてCNCF Blog記事を[^3]に追加
+  - AOT（Ahead-Of-Time）コンパイルへの言及を1.2節に追加
+  - glossary.mdにJITコンパイル、AOTコンパイルを追加
+  - glossary.mdのcontainerd, runwasiの初出章を第1章に更新
+  - Mermaidブロック2, 4にclassDef user定義を追加
+  - 設計問題の追加は見送り（第1章は概念章のため判断問題中心が妥当）

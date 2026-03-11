@@ -11,18 +11,18 @@
 
 ---
 
-## WebAssembly コア用語
+## WebAssembly コア概念
 
 ### WebAssembly (WASM)
-**定義**: ブラウザやサーバー上で動作するポータブルなバイナリ命令フォーマット。略称はWASM
+**定義**: ブラウザやサーバーで実行可能なポータブルなバイナリ命令フォーマット。本書では略称「WASM」を使用する
 **初出**: 第1章
 
 ### WASMモジュール (WASM Module)
-**定義**: WASMバイナリ（.wasmファイル）としてコンパイルされた実行可能な単位
+**定義**: WASMバイナリの単位。関数、メモリ、テーブル等をエクスポート・インポートできる
 **初出**: 第1章
 
 ### 線形メモリ (Linear Memory)
-**定義**: WASMモジュールがアクセスできる連続したバイト列。ホスト環境とのデータ共有に使用する
+**定義**: WASMモジュールがアクセスできる連続したバイト配列。JavaScriptからはArrayBufferとして参照される
 **初出**: 第1章
 
 ### WASI (WebAssembly System Interface)
@@ -30,76 +30,68 @@
 **初出**: 第1章
 
 ### バイトコード (Bytecode)
-**定義**: 仮想マシンが実行する中間的なバイナリ表現。WASMはこの形式で配布される
+**定義**: 仮想マシンが解釈・実行するための中間表現。WASMはスタックベースのバイトコードを採用している
 **初出**: 第1章
 
-## ツールチェーン関連
+## ツールチェーン
 
 ### wasm-pack
-**定義**: RustコードをWASMにコンパイルし、npmパッケージとして配布するためのビルドツール
+**定義**: Rustコードをコンパイルし、npm公開可能なWASMパッケージを生成するツール
 **初出**: 第2章
 
 ### wasm-bindgen
-**定義**: RustとJavaScript間の型変換やFFI（Foreign Function Interface）を自動生成するライブラリ
+**定義**: RustとJavaScript間の高レベルなバインディングを自動生成するライブラリ
 **初出**: 第2章
 
 ### wasmtime
-**定義**: WASMモジュールをブラウザ外で実行するためのランタイム。Bytecode Alliance が開発
+**定義**: Bytecode Alliance が開発するWASMのスタンドアロンランタイム。WASI対応
 **初出**: 第2章
 
 ### TinyGo
-**定義**: Go言語のサブセットをWASM等の小さなターゲットにコンパイルするコンパイラ
+**定義**: 組み込み・WASM向けに最適化されたGoコンパイラ。標準GoコンパイラよりもWASMバイナリサイズが小さい
 **初出**: 第2章
 
 ### Pyodide
-**定義**: CPythonをWASMにコンパイルし、ブラウザ上でPythonを実行可能にするプロジェクト
+**定義**: CPythonをWASMにコンパイルしたもの。ブラウザ上でPythonコードを実行できる
 **初出**: 第2章
 
-## JavaScript連携用語
+## JavaScript連携
 
 ### ArrayBuffer
 **定義**: JavaScriptで固定長のバイナリデータバッファを表すオブジェクト。WASMの線形メモリへのアクセスに使用する
 **初出**: 第3章
 
-### FFI (Foreign Function Interface)
-**定義**: 異なるプログラミング言語間で関数を呼び出すための仕組み
+### 型変換 (Type Conversion)
+**定義**: WASM（数値型のみ）とJavaScript（動的型付け）間でデータを受け渡す際の変換処理
 **初出**: 第3章
-
-### グルーコード (Glue Code)
-**定義**: WASMモジュールとJavaScriptの間を橋渡しするために自動生成されるコード
-**初出**: 第2章
 
 ## プラットフォーム/ランタイム関連
 
-### Bytecode Alliance
-**定義**: WASMおよびWASIの標準化と実装を推進する業界団体
+### containerd
+**定義**: コンテナランタイムの標準実装。Kubernetesのデフォルトランタイムとして使用される
 **初出**: 第1章
 
-### containerd
-**定義**: コンテナランタイムの業界標準実装。WASMワークロードの実行にも対応が進んでいる
-**初出**: 第5章
-
 ### runwasi
-**定義**: containerdのWASM対応shimで、Kubernetes上でWASMワークロードを実行可能にする
-**初出**: 第5章
+**定義**: containerd用のWASMシム。Kubernetes上でWASMワークロードをコンテナの代わりに実行できる
+**初出**: 第1章
 
 ## 一般技術用語
 
-### サンドボックス (Sandbox)
-**定義**: プログラムの実行を隔離された安全な環境に制限する仕組み。WASMの重要なセキュリティ特性の一つ
+### JITコンパイル (Just-In-Time Compilation)
+**定義**: 実行時にソースコードやバイトコードをネイティブコードに変換するコンパイル方式。JavaScriptエンジンが採用している
 **初出**: 第1章
 
-### AOTコンパイル (Ahead-of-Time Compilation)
-**定義**: 実行前にネイティブコードへコンパイルする方式。JITコンパイルと対比される
-**初出**: 第5章
-
-### JITコンパイル (Just-in-Time Compilation)
-**定義**: 実行時に動的にネイティブコードへコンパイルする方式。ブラウザのWASMランタイムで使用される
+### AOTコンパイル (Ahead-Of-Time Compilation)
+**定義**: 実行前にソースコードをネイティブコードに変換するコンパイル方式。WASMはAOTに近い実行モデルを持つ
 **初出**: 第1章
 
-### ツリーシェイキング (Tree Shaking)
-**定義**: 未使用コードをバンドルから除去する最適化手法。WASMバイナリのサイズ削減に使用する
+### バンドルサイズ (Bundle Size)
+**定義**: Webアプリケーションとして配信される際の、WASMバイナリとJavaScriptを合わせた総ファイルサイズ
 **初出**: 第5章
+
+### ポータビリティ (Portability)
+**定義**: 特定の環境に依存せず、複数のプラットフォームで同一のバイナリを実行できる性質
+**初出**: 第1章
 
 ---
 
@@ -108,18 +100,19 @@
 ### あ行
 
 ### か行
-- グルーコード → JavaScript連携用語
+- 型変換 → JavaScript連携
 
 ### さ行
-- サンドボックス → 一般技術用語
+- 線形メモリ → WebAssembly コア概念
 
 ### た行
-- ツリーシェイキング → 一般技術用語
 
 ### な行
 
 ### は行
-- バイトコード → WebAssembly コア用語
+- バイトコード → WebAssembly コア概念
+- バンドルサイズ → 一般技術用語
+- ポータビリティ → 一般技術用語
 
 ### ま行
 
@@ -130,18 +123,14 @@
 ### わ行
 
 ### A-Z
-- AOTコンパイル → 一般技術用語
-- ArrayBuffer → JavaScript連携用語
-- Bytecode Alliance → プラットフォーム/ランタイム関連
+- ArrayBuffer → JavaScript連携
 - containerd → プラットフォーム/ランタイム関連
-- FFI → JavaScript連携用語
-- JITコンパイル → 一般技術用語
-- Pyodide → ツールチェーン関連
+- Pyodide → ツールチェーン
 - runwasi → プラットフォーム/ランタイム関連
-- TinyGo → ツールチェーン関連
-- WASI → WebAssembly コア用語
-- wasm-bindgen → ツールチェーン関連
-- wasm-pack → ツールチェーン関連
-- wasmtime → ツールチェーン関連
-- WebAssembly → WebAssembly コア用語
-- WASMモジュール → WebAssembly コア用語
+- TinyGo → ツールチェーン
+- WASI → WebAssembly コア概念
+- wasm-bindgen → ツールチェーン
+- wasm-pack → ツールチェーン
+- wasmtime → ツールチェーン
+- WebAssembly (WASM) → WebAssembly コア概念
+- WASMモジュール → WebAssembly コア概念
