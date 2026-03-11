@@ -5,8 +5,8 @@
   "chapters": {
     "01": { "status": "done", "step": "done", "completed_at": "2026-03-11T10:30:00" },
     "02": { "status": "done", "step": "done", "completed_at": "2026-03-11T11:00:00" },
-    "03": { "status": "committing", "step": "committing", "completed_at": null },
-    "04": { "status": "pending", "step": null, "completed_at": null },
+    "03": { "status": "done", "step": "done", "completed_at": "2026-03-11T11:30:00" },
+    "04": { "status": "committing", "step": "committing", "completed_at": null },
     "05": { "status": "pending", "step": null, "completed_at": null }
   }
 }
