@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>WASM Image Filter</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; }
+        canvas { border: 1px solid #ccc; margin: 0.5rem; }
+        button { padding: 0.5rem 1rem; margin: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1>WASM Image Filter</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="applyBtn" disabled>グレースケール変換</button>
+    <div>
+        <canvas id="original"></canvas>
+        <canvas id="filtered"></canvas>
+    </div>
+    <p id="status"></p>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
