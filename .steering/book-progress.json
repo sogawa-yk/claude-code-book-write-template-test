@@ -1,12 +1,11 @@
 {
-  "started_at": "2026-03-11T10:00:00",
+  "started_at": "2026-03-12T10:00:00",
   "total_chapters": 5,
-  "env": "local+kubectl",
   "chapters": {
-    "01": { "status": "done", "step": "done", "completed_at": "2026-03-11T10:30:00" },
-    "02": { "status": "done", "step": "done", "completed_at": "2026-03-11T11:00:00" },
-    "03": { "status": "done", "step": "done", "completed_at": "2026-03-11T11:30:00" },
-    "04": { "status": "done", "step": "done", "completed_at": "2026-03-11T12:00:00" },
-    "05": { "status": "done", "step": "done", "completed_at": "2026-03-11T12:30:00" }
+    "01": { "status": "committing", "step": "committing" },
+    "02": { "status": "pending", "step": null, "completed_at": null },
+    "03": { "status": "pending", "step": null, "completed_at": null },
+    "04": { "status": "pending", "step": null, "completed_at": null },
+    "05": { "status": "pending", "step": null, "completed_at": null }
   }
 }
